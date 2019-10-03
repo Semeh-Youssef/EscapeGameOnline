@@ -6,26 +6,16 @@ import java.util.Scanner;
 public class Challenger {
 
 
-    public int[] nbAleatoir(int max) {
+    public int[] nbAleatoir() {
+        int max = 4;
         int[] nb = new int[max];
         Random r = new Random();
         for (int i = 0; i < max; i++) {
             nb[i] = r.nextInt( 9 );
+
         }
+
         return nb;
-    }
-
-    /**
-     * Run .
-     */
-
-    public void runNbAleatoir() {
-        int max = 4;
-        for (int i = 0; i < max; i++) {
-            int[] tab = this.nbAleatoir( max );
-
-            System.out.println( tab[i] );
-        }
     }
 
     /**
@@ -50,53 +40,51 @@ public class Challenger {
     }
 
 
+
     /*
      * compared the number put for user with the number random
      *put the result in the String
      */
-    String[] result;
+    StringBuilder result = new StringBuilder();
 
-    public String[] compared(int[]nb){
-        this.proposition();
-        for (int i = 0; i < nb.length; i++) {
-            for (int j = 0; j < proposition().length; j++) {
-                for (int k = 0; k < user.length; k++) {
-                    if (nb[i] == user[j]) {
-                        result[k] = "=";
+    public StringBuilder compared(int[] nb, int[] user) {
 
-                    } else if (nb[i] > user[j]) {
-                        result[k] = "+";
-                    } else
-                        result[k] = "-";
-                }
-            }
-        }
+        int i = 0;
+        int j = 0;
+        do {
+            if (nb[i] < user[j]) {
+                result.append( '+' );
+
+            } else if (nb[i] > user[j]) {
+                result.append( '-' );
+
+            } else
+                result.append( '=' );
+
+            j++;
+            i++;
+        }while (i<4 && j<4);
         return result;
     }
 
 
-    public void resultCompared (String [] result){
 
-        String resultCombinaison = null;
-        for( int i=0; i< result.length; i++){
-
-            resultCombinaison = result[i];
-        }
-        System.out.println( resultCombinaison);
-    }
-
-
-    public boolean displayResut( String[] result){
+    public boolean displayResut( StringBuilder result){
         boolean x = false;
+           String recherche = null;
 
-        for (int i = 0; i < result.length; i++)
+        for (int i=0; i < result.length(); i++)
         {
-            while  (result[i] == "+" || result[i]== "-")
-            {
-                x= true;
-            }
+           recherche = "=";
         }
+        if( result.equals(recherche))
+                x= true;
+        else
+            x=false;
+
+
         return x;
     }
 
-}
+
+    }
