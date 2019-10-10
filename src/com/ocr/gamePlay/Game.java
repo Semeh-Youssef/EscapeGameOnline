@@ -1,41 +1,121 @@
 package com.ocr.gamePlay;
 
-public class Game extends Challenger {
+import java.util.Random;
+import java.util.Scanner;
+
+public class Game {
 
 
-    public void plays() {
-        System.out.println( " Règle de jeux " );
-        System.out.println( " Le système va définit une combinaison de 4 chiffres aléatoirement \n" +
-                " qui est afficher en bas et vous devez le deniver " );
-        System.out.println( " Attention vous avez 4 essai ! " );
+    String [] tableau = new String[4];
+    int []tab=new int[tableau.length];
+    Scanner sc = new Scanner( System.in );
 
-        int nombreTour =0;
+    /**
+     * methode qui permet a l´utilisateur de saisir sa combainaison
+     * @return tableau d´entier
+     */
 
-        int[] nb = nbAleatoir();
-        System.out.print( "la combinaison secrete est : " );
-        affiche( nb );
-        System.out.print( "\n" );
+    public int [] saisieUtilisateur()
+    {
+        try    {
+            String chiffre= Integer.toString(sc.nextInt());
+
+            for(int i=0; i<chiffre.length();i++)
+            {
+                tableau[i] = String.valueOf( chiffre.charAt( i ) );
+            }
+
+            for(int i=0;i<tableau.length;i++){
+                tab [i] = Integer.parseInt( tableau[i]) ;
+            }
+
+        } catch (Exception e) {
+            System.out.println( "Erreur de saisi " );
+            System.out.println( "Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire" );
+        }
+        return tab;
+   }
+
+    /**
+     *
+     * @return
+     */
+
+    public int[] combinaisonSystem() {
+        int[] nb = new int[4];
+        Random r = new Random();
+        for (int i = 0; i < 4; i++) {
+            nb[i] = r.nextInt( 9 );
+        }
+        return nb;
+    }
+
+    /**
+     *
+     * @param tableau
+     */
+    public void afficheTabInt(int [] tableau)
+    {
+        for (int i = 0; i < tableau.length; i++)
+            System.out.print( tableau [i]);
+    }
+
+    /**
+     *
+     * @param tableau
+     */
+    public void afficheTabString(String [] tableau)
+    {
+        for (int i = 0; i < tableau.length; i++)
+            System.out.print( tableau [i]);
+    }
+
+    /**
+     *
+     */
+    String [] result = new String[4];
+
+    /**
+     *
+     * @param nb
+     * @param user
+     * @return
+     */
+    public String [] compared(int[] nb, int[] user) {
+
         int i = 0;
-            boolean resultJeu;
+
         do {
-            int [] user = saisie();
+            if (nb[i] < user[i]) {
+                result[i] = "+";
+            } else if (nb[i] > user[i]) {
+                result[i] = "-";
+            } else
+                result[i] = "=";
 
-            System.out.print( "\n" );
-            String [] result = compared( nb, user );
-            afficheString( result );
-            resultJeu= displayResut( result );
-            nombreTour++;
-
-        }while( !resultJeu && nombreTour <4);
-        if(resultJeu ==true){
-            System.out.println( "Felicitation vous avez deviner la combainaison" );}
-        else
-        {System.out.println( "vous avez perdu" );}
-    }
+            i++;
+        }while (i<4);
+        return result;
     }
 
+    /**
+     *
+     * @param result
+     * @return
+     */
+
+    public boolean displayResutCompared( String [] result){
+        boolean x = true;
+
+        for (int i = 0; i < result.length; i++)
+        {
+            if  (result[i].equals( "+" )  || result[i].equals( "-" ))
+            {
+                x= false;
+            }
+        }
+        return x;
+    }
 
 
-
-
-
+}

@@ -1,49 +1,48 @@
 package com.ocr.gamePlay;
 
-public class Duel extends Utilitaire {
+public class DuelGamer extends Game {
 
     public void playDuel () {
         int nombreTour = 0;
         boolean compar;
-        int[] combinaison = nbAleatoir();
+        int[] combinaison =combinaisonSystem();
+        System.out.println( "Saisir votre combinaison secrete : " );
+        int[] combinaisonUtilisateur = saisieUtilisateur();
+
         do {
             nombreTour++;
-
-            int[] proposition = saisie();
+            System.out.println( "Saisir votre proposition " );
+            int[] proposition = saisieUtilisateur();
             System.out.print( "\n " );
             result = compared( combinaison, proposition );
             System.out.print( "la combinaison secrete est : " );
-            affiche( combinaison );
+            afficheTabInt( combinaison );
             System.out.print( "\n " );
             System.out.print( "votre proposition est: " );
-            affiche( proposition );
-            afficheString( result );
+            afficheTabInt( proposition );
+            afficheTabString( result );
             System.out.print( "\n " );
-            compar = displayResut( result );
-
+            compar = displayResutCompared( result );
 
             if (compar == true) {
-                System.out.print( "Félicitation vous avez deviné la combinaison secrète " );
+                System.out.println( "Félicitation vous avez deviné la combinaison secrète " );
                 break;
             } else {
                 System.out.println( "Vous avez raté " );
-                System.out.println( "Saisir votre combinaison secrete " );
-                int[] combinaisonUtilisateur = saisie();
 
-                nombreTour++;
-                int[] propositionSystheme = nbAleatoir();
+                int[] propositionSystheme = combinaisonSystem();
                 result = compared( propositionSystheme, combinaisonUtilisateur );
                 System.out.print( "votre combinaison est: " );
-                affiche( combinaisonUtilisateur );
+                afficheTabInt( combinaisonUtilisateur );
                 System.out.print( "\n " );
                 System.out.print( "Ma proposition est : " );
-                affiche( propositionSystheme );
+                afficheTabInt( propositionSystheme );
                 System.out.print( "\n " );
-                afficheString( result );
-                compar = displayResut( result );
+                afficheTabString( result );
+                compar = displayResutCompared( result );
             }
             if (compar == true) {
-                System.out.print( "J´ai deviné votre combinaison secrète " );
+                System.out.println( "J´ai deviné votre combinaison secrète " );
                 break;
             } else {
                 System.out.println( "J'ai raté" );
