@@ -23,16 +23,11 @@ public class DefenceurGamer extends Game{
             System.out.print( "\n" );
               comp = displayResutCompared( result );
 
-          }while( !comp && nombreTour <4);
+          }while( !comp && nombreTour <nombreEssai);
             if(comp ==true)
             System.out.print( "j ai réussi a deviné votre combinaison " );
             else
                 System.out.println( "vous avez perdu" );
         }
-
-
-
-
-
 
 }

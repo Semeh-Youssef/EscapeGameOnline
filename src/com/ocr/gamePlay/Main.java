@@ -7,15 +7,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        // ecrire dans le fichier config.properties
         try (OutputStream output = new FileOutputStream("config.properties")) {
 
             Properties prop = new Properties();
 
             // set the properties value
-            prop.setProperty("taille.combinaison", "2");
-            prop.setProperty("nombre.essai", "2");
-            prop.setProperty("mode.developpeur", "inactive");
+            prop.setProperty("taille.combinaison", "4");
+            prop.setProperty("nombre.essai", "4");
+            prop.setProperty("mode.developpeur", "active");
 
             // save properties to project root folder
             prop.store(output, null);
@@ -27,7 +27,7 @@ public class Main {
         } catch (IOException io) {
             io.printStackTrace();
         }
-
+        // lire le fichier config.properties
 
         try (InputStream input = new FileInputStream("config.properties")) {
 
@@ -35,7 +35,6 @@ public class Main {
 
             // load a properties file
             prop.load(input);
-
             // get the property value and print it out
             System.out.println(prop.getProperty("taille.combinaison"));
             System.out.println(prop.getProperty("nombre.essai"));
@@ -45,11 +44,11 @@ public class Main {
             ex.printStackTrace();
         }
 
-        /**
+
         System.out.println("Bienvenu \r\n");
       MenuPrincipal menu = new MenuPrincipal();
       menu. runMenu();
-         **/
+
 
 
 

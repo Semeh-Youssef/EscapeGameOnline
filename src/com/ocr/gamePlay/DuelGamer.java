@@ -48,7 +48,7 @@ public class DuelGamer extends Game {
                 System.out.println( "J'ai raté" );
 
             }
-        }while (!compar && nombreTour < 4) ;
+        }while (!compar && nombreTour < nombreEssai) ;
 
 
         }

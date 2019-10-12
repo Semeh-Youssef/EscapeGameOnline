@@ -1,12 +1,54 @@
 package com.ocr.gamePlay;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
+    public Game() {
+    }
+
+    int tailleCombinaison ;
+    int nombreEssai ;
+    String mode_Devloppeur;
+    protected boolean modeDevloppeur;
 
 
-    String [] tableau = new String[4];
+       InputStream input;
+
+    {
+        try {
+            input = new FileInputStream("config.properties");
+            Properties prop = new Properties();
+
+            // load a properties file
+
+            prop.load(input);
+
+            tailleCombinaison = Integer.parseInt( prop.getProperty( "taille.combinaison" ) );
+             nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
+            mode_Devloppeur =  (prop.getProperty("mode.developpeur"));
+
+        } catch (
+             IOException ex) {
+                 ex.printStackTrace();
+             }
+          }
+
+
+
+    public boolean isModeDevloppeur() {
+        if(mode_Devloppeur == "active")
+            modeDevloppeur =true;
+        else modeDevloppeur = false;
+        return modeDevloppeur;
+    }
+
+    String [] tableau = new String[tailleCombinaison];
     int []tab=new int[tableau.length];
     Scanner sc = new Scanner( System.in );
 
@@ -42,9 +84,9 @@ public class Game {
      */
 
     public int[] combinaisonSystem() {
-        int[] nb = new int[4];
+        int[] nb = new int[tailleCombinaison];
         Random r = new Random();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < tailleCombinaison; i++) {
             nb[i] = r.nextInt( 9 );
         }
         return nb;
