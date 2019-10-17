@@ -87,7 +87,6 @@ public class Game {
      * @return combinaison de systeme dans un tabeau
      */
     public int[] combinaisonSystem() {
-
         Random r = new Random();
         for (int i = 0; i < tailleCombinaison; i++) {
             combinaisonAleatoire[i] = r.nextInt( 9 );
@@ -95,43 +94,6 @@ public class Game {
         return combinaisonAleatoire;
     }
 
-
-    /**
-     *Tire un nombre au hasard, compris  entre 0 et max
-     * @param max la borne haute des nombres tirés au hasard
-     * @return un nombre au hasard
-     */
-    private static int aleatoire(int max) {
-        return (int)(Math.random() * max) ;
-    }
-
-
-    /**
-     *
-     * @param combinaison tableau de la combinaison de l´utilisateur
-     * @param combinaisonAleatoire tableau de la proposition de systeme
-     * @return tableau de proposition de systeme
-     */
-    public int[] propositionSystem(int [] combinaison ,int[] combinaisonAleatoire){
-        for(int i=0;i<combinaison.length; i++) {
-           for (int j = 0;j<combinaisonAleatoire.length; j++){
-            if (combinaison[i] == combinaisonAleatoire[j]) {
-                i++;
-                j++;
-            } else if (combinaison[i] > combinaisonAleatoire[j]) {
-                combinaisonAleatoire[j] = aleatoire( combinaison[i] );
-                i++;
-                j++;
-
-            } else
-                combinaisonAleatoire[j] = aleatoire( combinaisonAleatoire[j] );
-            i++;
-            j++;
-        }}
-        return combinaisonAleatoire;
-    }
-
-    
 
     /**
      *afficher les element d´un tableau d´entier
@@ -201,7 +163,6 @@ public class Game {
         return x;
     }
 
-        int [] tableauTrier  = {0,1,2,3,4,5,6,7,8,9};
 
     /**
      *
@@ -228,7 +189,11 @@ public class Game {
         return propositionSysteme;
     }
 
-
+    /**
+     *
+     * @param combinaison
+     * @return
+     */
 
     public int [] propositionSysteme (int []combinaison)
     {
@@ -241,6 +206,5 @@ public class Game {
             System.out.println( proposition[i] );
 
         return proposition;
-
     }
 }

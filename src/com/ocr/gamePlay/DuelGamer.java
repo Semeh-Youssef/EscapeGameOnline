@@ -29,7 +29,7 @@ public class DuelGamer extends Game {
                 break;
             } else {
                 System.out.println( "Vous avez raté " );
-                int[] propositionSystheme = combinaisonSystem();
+                int[] propositionSystheme = propositionSysteme(combinaisonUtilisateur);
                 result = compared( propositionSystheme, combinaisonUtilisateur );
                 System.out.print( "votre combinaison est: " );
                 afficheTabInt( combinaisonUtilisateur );

@@ -27,8 +27,8 @@ public class DefenceurGamer extends Game{
         else {
         do {
             nombreTour ++;
-            //int [] propositionSysteme = rechercheDichotomique( combinaison, tableauTrier);
-            int [] propositionSysteme = propositionSystem( combinaison, premierePropositionSys );
+            int [] propositionSysteme = propositionSysteme(combinaison);
+          //  int [] propositionSysteme = propositionSystem( combinaison, premierePropositionSys );
             System.out.println( "Ma proposition est : " );
             afficheTabInt( propositionSysteme );
             System.out.print( "\n" );
