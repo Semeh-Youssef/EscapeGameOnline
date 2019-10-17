@@ -18,7 +18,6 @@ public class ChalengerGamer extends Game {
             boolean resultJeu;
         do {
             int [] user = saisieUtilisateur();
-
             System.out.print( "\n" );
             String [] result = compared( nb, user );
             afficheTabString( result );

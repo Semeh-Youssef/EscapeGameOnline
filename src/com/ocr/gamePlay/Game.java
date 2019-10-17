@@ -9,18 +9,16 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    public Game() {
-    }
 
     int tailleCombinaison ;
     int nombreEssai ;
     String mode_Devloppeur;
     protected boolean modeDevloppeur;
 
+    InputStream input;
 
-       InputStream input;
+    public Game() {
 
-    {
         try {
             input = new FileInputStream("config.properties");
             Properties prop = new Properties();
@@ -30,14 +28,15 @@ public class Game {
             prop.load(input);
 
             tailleCombinaison = Integer.parseInt( prop.getProperty( "taille.combinaison" ) );
-             nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
+            nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
             mode_Devloppeur =  (prop.getProperty("mode.developpeur"));
 
-        } catch (
-             IOException ex) {
-                 ex.printStackTrace();
-             }
-          }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 
 
 
@@ -49,7 +48,7 @@ public class Game {
     }
 
     String [] tableau = new String[tailleCombinaison];
-    int []tab=new int[tableau.length];
+    int []combinaison=new int[tableau.length];
     Scanner sc = new Scanner( System.in );
 
     /**
@@ -68,33 +67,75 @@ public class Game {
             }
 
             for(int i=0;i<tableau.length;i++){
-                tab [i] = Integer.parseInt( tableau[i]) ;
+                combinaison [i] = Integer.parseInt( tableau[i]) ;
             }
 
         } catch (Exception e) {
             System.out.println( "Erreur de saisi " );
             System.out.println( "Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire" );
         }
-        return tab;
+        return combinaison;
    }
 
     /**
-     *
-     * @return
+     * inisialiser un tableau d´entier
      */
+    int[] combinaisonAleatoire = new int[tailleCombinaison];
 
+    /**
+     * combinaision de proposer par le systeme
+     * @return combinaison de systeme dans un tabeau
+     */
     public int[] combinaisonSystem() {
-        int[] nb = new int[tailleCombinaison];
+
         Random r = new Random();
         for (int i = 0; i < tailleCombinaison; i++) {
-            nb[i] = r.nextInt( 9 );
+            combinaisonAleatoire[i] = r.nextInt( 9 );
         }
-        return nb;
+        return combinaisonAleatoire;
     }
+
+
+    /**
+     *Tire un nombre au hasard, compris  entre 0 et max
+     * @param max la borne haute des nombres tirés au hasard
+     * @return un nombre au hasard
+     */
+    private static int aleatoire(int max) {
+        return (int)(Math.random() * max) ;
+    }
+
 
     /**
      *
-     * @param tableau
+     * @param combinaison tableau de la combinaison de l´utilisateur
+     * @param combinaisonAleatoire tableau de la proposition de systeme
+     * @return tableau de proposition de systeme
+     */
+    public int[] propositionSystem(int [] combinaison ,int[] combinaisonAleatoire){
+        for(int i=0;i<combinaison.length; i++) {
+           for (int j = 0;j<combinaisonAleatoire.length; j++){
+            if (combinaison[i] == combinaisonAleatoire[j]) {
+                i++;
+                j++;
+            } else if (combinaison[i] > combinaisonAleatoire[j]) {
+                combinaisonAleatoire[j] = aleatoire( combinaison[i] );
+                i++;
+                j++;
+
+            } else
+                combinaisonAleatoire[j] = aleatoire( combinaisonAleatoire[j] );
+            i++;
+            j++;
+        }}
+        return combinaisonAleatoire;
+    }
+
+    
+
+    /**
+     *afficher les element d´un tableau d´entier
+     * @param tableau (tableau de  combinaison)
      */
     public void afficheTabInt(int [] tableau)
     {
@@ -103,7 +144,7 @@ public class Game {
     }
 
     /**
-     *
+     *afficher les element d´un tableau chaine de caractaire
      * @param tableau
      */
     public void afficheTabString(String [] tableau)
@@ -118,19 +159,20 @@ public class Game {
     String [] result = new String[4];
 
     /**
-     *
-     * @param nb
-     * @param user
+     * comparer deux combinaisions, qui prend en parametre deux tableaux
+     * la combinaison proposer et proposition
+     * @param combinaisonAleatoire
+     * @param combinaison
      * @return
      */
-    public String [] compared(int[] nb, int[] user) {
+    public String [] compared(int[] combinaisonAleatoire, int[] combinaison) {
 
         int i = 0;
 
         do {
-            if (nb[i] < user[i]) {
+            if (combinaisonAleatoire[i] < combinaison[i]) {
                 result[i] = "+";
-            } else if (nb[i] > user[i]) {
+            } else if (combinaisonAleatoire[i] > combinaison[i]) {
                 result[i] = "-";
             } else
                 result[i] = "=";
@@ -159,5 +201,46 @@ public class Game {
         return x;
     }
 
+        int [] tableauTrier  = {0,1,2,3,4,5,6,7,8,9};
 
+    /**
+     *
+     * @param tableauTrier
+     * @param elt
+     * @return
+     */
+    public static int rechercheDichotomique(int[] tableauTrier, int elt) {
+        int n = tableauTrier.length-1;
+        int min =  1;
+        int  max =  n;
+        int milieu ;
+        int  propositionSysteme =0;
+
+        do{
+            milieu =  (min + max) / 2;
+            if ( elt == tableauTrier[milieu])
+                propositionSysteme =  milieu ;
+            else if  (tableauTrier[milieu] < elt )  min =  milieu + 1 ;
+            else max =  milieu-1 ;
+        }
+        while ( ( elt != tableauTrier[milieu] ) & ( min <= max ) );
+
+        return propositionSysteme;
+    }
+
+
+
+    public int [] propositionSysteme (int []combinaison)
+    {
+        int [] tableauTrier  = {0,1,2,3,4,5,6,7,8,9};
+        int [] proposition = new int [4];
+
+        for (int i=0;i<combinaison.length;i++){
+            proposition[i]= rechercheDichotomique( tableauTrier,combinaison[i] );}
+        for (int i=0;i<proposition.length;i++)
+            System.out.println( proposition[i] );
+
+        return proposition;
+
+    }
 }

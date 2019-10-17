@@ -2,11 +2,14 @@ package com.ocr.gamePlay;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
         // ecrire dans le fichier config.properties
         try (OutputStream output = new FileOutputStream("config.properties")) {
 

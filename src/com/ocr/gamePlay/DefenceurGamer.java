@@ -8,20 +8,35 @@ public class DefenceurGamer extends Game{
 
         int nombreTour = 0;
         System.out.println( "Saisir votre combinaison secrete : " );
-        int[] comb =saisieUtilisateur();
+        int[] combinaison =saisieUtilisateur();
         System.out.print( "\n" );
         boolean comp;
-        do {
-             nombreTour ++;
-              int[] nb = combinaisonSystem();
+
+
+             int[] premierePropositionSys = combinaisonSystem();
             System.out.println( "Ma proposition est : " );
-              afficheTabInt( nb );
-              System.out.print( "\n" );
-              result = compared( nb, comb );
-            System.out.println( "la Resultat de la comparaison est :" );
-              afficheTabString( result );
+            afficheTabInt( premierePropositionSys );
             System.out.print( "\n" );
-              comp = displayResutCompared( result );
+            result = compared( premierePropositionSys, combinaison );
+            System.out.println( "la Resultat de la comparaison est :" );
+            afficheTabString( result );
+            System.out.print( "\n" );
+            comp = displayResutCompared( result );
+        if(comp ==true)
+            System.out.print( "j ai réussi a deviné votre combinaison " );
+        else {
+        do {
+            nombreTour ++;
+            //int [] propositionSysteme = rechercheDichotomique( combinaison, tableauTrier);
+            int [] propositionSysteme = propositionSystem( combinaison, premierePropositionSys );
+            System.out.println( "Ma proposition est : " );
+            afficheTabInt( propositionSysteme );
+            System.out.print( "\n" );
+            result = compared(propositionSysteme, combinaison );
+            System.out.println( "la Resultat de la comparaison est :" );
+            afficheTabString( result );
+            System.out.print( "\n" );
+            comp = displayResutCompared( result );
 
           }while( !comp && nombreTour <nombreEssai);
             if(comp ==true)
@@ -29,5 +44,6 @@ public class DefenceurGamer extends Game{
             else
                 System.out.println( "vous avez perdu" );
         }
+    }
 
 }
