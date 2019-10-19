@@ -9,15 +9,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
+    InputStream input;
     int tailleCombinaison ;
     int nombreEssai ;
     String mode_Devloppeur;
+    String [] tableau ;
+    int []combinaison;
+    int[] combinaisonAleatoire ;
     protected boolean modeDevloppeur;
+    String [] result = new String[4];
 
-    InputStream input;
+
+    Scanner sc = new Scanner( System.in );
 
     public Game() {
+
 
         try {
             input = new FileInputStream("config.properties");
@@ -32,13 +38,21 @@ public class Game {
             mode_Devloppeur =  (prop.getProperty("mode.developpeur"));
 
         } catch (IOException ex) {
+            tailleCombinaison=4;
             ex.printStackTrace();
         }
+        tableau = new String[tailleCombinaison];
+        combinaison=new int[tailleCombinaison];
+        combinaisonAleatoire = new int[tailleCombinaison];
     }
 
 
 
 
+    /**
+     * methode permet de verivier si le mode devloppeur active ou non
+     * @return
+     */
 
     public boolean isModeDevloppeur() {
         if(mode_Devloppeur == "active")
@@ -47,9 +61,6 @@ public class Game {
         return modeDevloppeur;
     }
 
-    String [] tableau = new String[tailleCombinaison];
-    int []combinaison=new int[tableau.length];
-    Scanner sc = new Scanner( System.in );
 
     /**
      * methode qui permet a l´utilisateur de saisir sa combainaison
@@ -77,15 +88,12 @@ public class Game {
         return combinaison;
    }
 
-    /**
-     * inisialiser un tableau d´entier
-     */
-    int[] combinaisonAleatoire = new int[tailleCombinaison];
 
     /**
      * combinaision de proposer par le systeme
      * @return combinaison de systeme dans un tabeau
      */
+
     public int[] combinaisonSystem() {
         Random r = new Random();
         for (int i = 0; i < tailleCombinaison; i++) {
@@ -115,10 +123,6 @@ public class Game {
             System.out.print( tableau [i]);
     }
 
-    /**
-     *
-     */
-    String [] result = new String[4];
 
     /**
      * comparer deux combinaisions, qui prend en parametre deux tableaux
@@ -145,9 +149,11 @@ public class Game {
     }
 
     /**
-     *
-     * @param result
-     * @return
+     * cette methode affiche la  resultat du comapraision des deux combinaisons,
+     * elle prend en parametre un tableau chaine de caractaire, si tout le tabeau contient = elle retourne true
+     * si non false
+     * @param result tableau de chaine de caractaire (+,-,=)
+     * @return boolean
      */
 
     public boolean displayResutCompared( String [] result){
@@ -165,12 +171,13 @@ public class Game {
 
 
     /**
-     *
+     * methode de recherche dichotomique elle prend deux variables, un tableau trier de 0 a 9 et element a rechercher
+     * elle retrourne l´element rechercher
      * @param tableauTrier
-     * @param elt
-     * @return
+     * @param elt element a rechercher
+     * @return variable de type int
      */
-    public static int rechercheDichotomique(int[] tableauTrier, int elt) {
+   /** public static int rechercheDichotomique(int[] tableauTrier, int elt) {
         int n = tableauTrier.length-1;
         int min =  1;
         int  max =  n;
@@ -190,15 +197,17 @@ public class Game {
     }
 
     /**
-     *
-     * @param combinaison
+     * methode permet de trouver la combinaison secrette saisie par l´utilisateur,
+     * elle prend en parametre ta combinaison secrette et fait appel la methode rechercheDichotomique
+     * et finalement elle return un tableau de proposition systeme
+     * @param combinaison tableau contient la combinaison secrette de l´utilisateur
      * @return
      */
-
+    /**
     public int [] propositionSysteme (int []combinaison)
     {
         int [] tableauTrier  = {0,1,2,3,4,5,6,7,8,9};
-        int [] proposition = new int [4];
+        int [] proposition = new int [tailleCombinaison];
 
         for (int i=0;i<combinaison.length;i++){
             proposition[i]= rechercheDichotomique( tableauTrier,combinaison[i] );}
@@ -207,4 +216,47 @@ public class Game {
 
         return proposition;
     }
+     **/
+
+    public static int[][] rechercheDichotomique(int[] tableauTrier, int[] combinaison, int[]min ,int []max) {
+        int n = tableauTrier.length - 1;
+        int milieu;
+        int[] propositionSysteme = new int[4];
+
+        for (int j = 0; j < combinaison.length; j++) {
+
+            if (min[j] <= max[j]) {
+                milieu = (min[j] + max[j]) / 2;
+
+                if (combinaison[j] == tableauTrier[milieu])
+                    propositionSysteme[j] = milieu;
+                else if (tableauTrier[milieu] < combinaison[j]) min[j] = milieu + 1;
+                else max[j] = milieu - 1;
+            }
+        }
+
+        int[][] proposition = {propositionSysteme, min, max };
+        return proposition;
+    }
+    public int [][] propositionSysteme (int []combinaison) {
+        int[] tableauTrier = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[][] prop = new int[tailleCombinaison][tailleCombinaison];
+
+        int[] min = {0, 0, 0, 0};
+        int[] max = {9, 9, 9, 9};
+        int[][] prop1 = new int[tailleCombinaison][tailleCombinaison];
+        prop = rechercheDichotomique( tableauTrier, combinaison, min, max );
+        for (int i = 0; i < prop.length; i++) {
+            for (int j = 0; j < prop[i].length; j++)
+                System.out.print( prop[i][j] );
+            System.out.println();
+            prop1 = rechercheDichotomique( tableauTrier, combinaison, prop[1], prop[2] );
+            for (int k = 0; k < prop1.length; k++) {
+                for (int j = 0; j < prop1[k].length; j++)
+                    System.out.print( prop1[k][j] );
+                System.out.println();
+            }
+        }
+    return prop;
+}
 }
