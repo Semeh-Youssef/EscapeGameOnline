@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_escapegameonline" default="compile.module.escapegameonline">
+  <dirname property="module.escapegameonline.basedir" file="${ant.file.module_escapegameonline}"/>
+  
+  <property name="module.jdk.home.escapegameonline" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.escapegameonline" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.escapegameonline" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.escapegameonline" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="escapegameonline.output.dir" value="${module.escapegameonline.basedir}/out/production/EscapeGameOnline"/>
+  <property name="escapegameonline.testoutput.dir" value="${module.escapegameonline.basedir}/out/test/EscapeGameOnline"/>
+  
+  <path id="escapegameonline.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="escapegameonline.module.production.classpath">
+    <path refid="${module.jdk.classpath.escapegameonline}"/>
+  </path>
+  
+  <path id="escapegameonline.runtime.production.module.classpath">
+    <pathelement location="${escapegameonline.output.dir}"/>
+  </path>
+  
+  <path id="escapegameonline.module.classpath">
+    <path refid="${module.jdk.classpath.escapegameonline}"/>
+    <pathelement location="${escapegameonline.output.dir}"/>
+  </path>
+  
+  <path id="escapegameonline.runtime.module.classpath">
+    <pathelement location="${escapegameonline.testoutput.dir}"/>
+    <pathelement location="${escapegameonline.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.escapegameonline">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.escapegameonline">
+    <patternset refid="excluded.from.module.escapegameonline"/>
+  </patternset>
+  
+  <path id="escapegameonline.module.sourcepath">
+    <dirset dir="${module.escapegameonline.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.escapegameonline" depends="compile.module.escapegameonline.production,compile.module.escapegameonline.tests" description="Compile module EscapeGameOnline"/>
+  
+  <target name="compile.module.escapegameonline.production" depends="register.custom.compilers" description="Compile module EscapeGameOnline; production classes">
+    <mkdir dir="${escapegameonline.output.dir}"/>
+    <javac2 destdir="${escapegameonline.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.escapegameonline}/javac">
+      <compilerarg line="${compiler.args.escapegameonline}"/>
+      <bootclasspath refid="escapegameonline.module.bootclasspath"/>
+      <classpath refid="escapegameonline.module.production.classpath"/>
+      <src refid="escapegameonline.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.escapegameonline"/>
+    </javac2>
+    
+    <copy todir="${escapegameonline.output.dir}">
+      <fileset dir="${module.escapegameonline.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.escapegameonline.tests" depends="register.custom.compilers,compile.module.escapegameonline.production" description="compile module EscapeGameOnline; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.escapegameonline" description="cleanup module">
+    <delete dir="${escapegameonline.output.dir}"/>
+    <delete dir="${escapegameonline.testoutput.dir}"/>
+  </target>
+</project>

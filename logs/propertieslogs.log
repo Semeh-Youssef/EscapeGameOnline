@@ -1,0 +1,13 @@
+[DEBUG] 2019-10-21 09:29:11.356 [main] Main - msg de debogage
+[INFO ] 2019-10-21 09:29:11.359 [main] Main - msg d'information
+[WARN ] 2019-10-21 09:29:11.359 [main] Main - msg d'avertissement
+[ERROR] 2019-10-21 09:29:11.359 [main] Main - msg d'erreur
+[FATAL] 2019-10-21 09:29:11.359 [main] Main - msg d'erreur fatale
+[INFO ] 2019-10-22 17:12:52.540 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-22 17:12:52.543 [main] Main - msg d'erreur
+[INFO ] 2019-10-22 17:13:15.778 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-22 17:13:15.778 [main] Main - msg d'erreur
+[INFO ] 2019-10-22 17:14:04.623 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-22 17:14:04.623 [main] Main - msg d'erreur
+[INFO ] 2019-10-22 17:23:52.487 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-22 17:23:52.487 [main] Main - msg d'erreur

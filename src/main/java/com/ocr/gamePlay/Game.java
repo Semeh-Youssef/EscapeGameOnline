@@ -39,6 +39,7 @@ public class Game {
 
         } catch (IOException ex) {
             tailleCombinaison=4;
+          //  logger.error("msg d'erreur");
             ex.printStackTrace();
         }
         tableau = new String[tailleCombinaison];
@@ -177,24 +178,33 @@ public class Game {
      * @param elt element a rechercher
      * @return variable de type int
      */
-   /** public static int rechercheDichotomique(int[] tableauTrier, int elt) {
-        int n = tableauTrier.length-1;
-        int min =  1;
-        int  max =  n;
-        int milieu ;
-        int  propositionSysteme =0;
 
-        do{
-            milieu =  (min + max) / 2;
-            if ( elt == tableauTrier[milieu])
-                propositionSysteme =  milieu ;
-            else if  (tableauTrier[milieu] < elt )  min =  milieu + 1 ;
-            else max =  milieu-1 ;
+     int[] tableauTrier = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+     int[] min = {0, 0, 0, 0};
+     int[] max = {9, 9, 9, 9};
+    String[] signe = new String[tailleCombinaison];
+     int []propositionSysteme = new int[4];
+
+    public int[] rechercheDichotomique(int i) {
+        int milieu;
+        for (int j = 0; j <combinaison.length; j++) {
+            if (min[j] <= max[j]) {
+                milieu = (min[j] + max[j]) / 2;
+                if (combinaison[j] == tableauTrier[milieu])
+                {  signe[j] = "=";
+                    propositionSysteme[j] = milieu;}
+                else if (tableauTrier[milieu] < combinaison[j]) {
+                    min[j] = milieu + 1;
+                    signe[j] = "-";}
+                else {
+                    max[j] = milieu - 1;
+                    signe[j] =  "+";
+                }
+            }
         }
-        while ( ( elt != tableauTrier[milieu] ) & ( min <= max ) );
-
         return propositionSysteme;
     }
+
 
     /**
      * methode permet de trouver la combinaison secrette saisie par l´utilisateur,
@@ -203,60 +213,10 @@ public class Game {
      * @param combinaison tableau contient la combinaison secrette de l´utilisateur
      * @return
      */
-    /**
-    public int [] propositionSysteme (int []combinaison)
-    {
-        int [] tableauTrier  = {0,1,2,3,4,5,6,7,8,9};
-        int [] proposition = new int [tailleCombinaison];
 
-        for (int i=0;i<combinaison.length;i++){
-            proposition[i]= rechercheDichotomique( tableauTrier,combinaison[i] );}
-        for (int i=0;i<proposition.length;i++)
-            System.out.println( proposition[i] );
 
-        return proposition;
-    }
-     **/
 
-    public static int[][] rechercheDichotomique(int[] tableauTrier, int[] combinaison, int[]min ,int []max) {
-        int n = tableauTrier.length - 1;
-        int milieu;
-        int[] propositionSysteme = new int[4];
 
-        for (int j = 0; j < combinaison.length; j++) {
 
-            if (min[j] <= max[j]) {
-                milieu = (min[j] + max[j]) / 2;
 
-                if (combinaison[j] == tableauTrier[milieu])
-                    propositionSysteme[j] = milieu;
-                else if (tableauTrier[milieu] < combinaison[j]) min[j] = milieu + 1;
-                else max[j] = milieu - 1;
-            }
-        }
-
-        int[][] proposition = {propositionSysteme, min, max };
-        return proposition;
-    }
-    public int [][] propositionSysteme (int []combinaison) {
-        int[] tableauTrier = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[][] prop = new int[tailleCombinaison][tailleCombinaison];
-
-        int[] min = {0, 0, 0, 0};
-        int[] max = {9, 9, 9, 9};
-        int[][] prop1 = new int[tailleCombinaison][tailleCombinaison];
-        prop = rechercheDichotomique( tableauTrier, combinaison, min, max );
-        for (int i = 0; i < prop.length; i++) {
-            for (int j = 0; j < prop[i].length; j++)
-                System.out.print( prop[i][j] );
-            System.out.println();
-            prop1 = rechercheDichotomique( tableauTrier, combinaison, prop[1], prop[2] );
-            for (int k = 0; k < prop1.length; k++) {
-                for (int j = 0; j < prop1[k].length; j++)
-                    System.out.print( prop1[k][j] );
-                System.out.println();
-            }
-        }
-    return prop;
-}
 }
