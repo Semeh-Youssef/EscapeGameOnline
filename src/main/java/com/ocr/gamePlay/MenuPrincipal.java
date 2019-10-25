@@ -1,15 +1,19 @@
 package com.ocr.gamePlay;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
+
+/**
+ * menu de jeu
+ */
 
 public class MenuPrincipal {
+    static Logger logger = LogManager.getLogger(MenuPrincipal.class);
     /**
-     * Display all available modes in the game.
+     * Affiche tous les modes disponibles dans le jeu.
      */
     public void displayMenu() {
-
-
         System.out.print("1 - Challenger \r\n");
         System.out.print("2 - Défenseur \r\n");
         System.out.print("3 - Duel \r\n");
@@ -17,7 +21,7 @@ public class MenuPrincipal {
         System.out.println("choisissez le mode de jeu qui vous convient : \r\n");
     }
     /**
-     * Display a selected mode.
+     * Afficher un mode choisi par l´utilisateur
      * @param nbMode The selected menu.
      */
     public void displaySelectedMenu(int nbMode) {
@@ -62,7 +66,7 @@ public class MenuPrincipal {
            Scanner sc = new Scanner(System.in);
             nb = sc.nextInt();
        }catch (Exception e)
-       { System.out.println("Erreur de saisi ");}
+       {logger.error ("Erreur de saisi ");}
        this.displaySelectedMenu(nb);
   }
 

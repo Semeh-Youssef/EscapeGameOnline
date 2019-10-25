@@ -13,11 +13,10 @@ public class DefenceurGamer extends Game{
         boolean comp;
 
              int[] premierePropositionSys = combinaisonSystem();
-             System.out.println( "Ma proposition est : " );
+             System.out.print( "Ma proposition est : " );
              afficheTabInt( premierePropositionSys );
-             System.out.print( "\n" );
+
             result = compared( premierePropositionSys, combinaison );
-            System.out.println( "la Resultat de la comparaison est :" );
             afficheTabString( result );
             System.out.print( "\n" );
             comp = displayResutCompared( result );
@@ -27,11 +26,10 @@ public class DefenceurGamer extends Game{
         do {
             nombreTour ++;
             int [] propositionSysteme = rechercheDichotomique( nombreTour );
-            System.out.println( "Ma proposition est : " );
-            afficheTabInt( propositionSysteme );
-            System.out.print( "\n" );
             result = compared(propositionSysteme, combinaison );
-            System.out.println( "la Resultat de la comparaison est :" );
+            System.out.print( "Ma proposition est : " );
+            afficheTabInt( propositionSysteme );
+            System.out.print( " " );
             afficheTabString( result );
             System.out.print( "\n" );
             comp = displayResutCompared( result );

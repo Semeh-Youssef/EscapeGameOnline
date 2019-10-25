@@ -5,24 +5,24 @@ public class DuelGamer extends Game {
     public void playDuel () {
         int nombreTour = 0;
         boolean compar;
-        int[] combinaison =combinaisonSystem();
+        int[] combinaisonSys =combinaisonSystem();
         System.out.println( "Saisir votre combinaison secrete : " );
-        int[] combinaisonUtilisateur = saisieUtilisateur();
+       int [] combinaisonUser = saisieUtilisateur();
 
         do {
             nombreTour++;
-            if(isModeDevloppeur()==true){
-                System.out.print( "la combinaison secrete est : " );
-                afficheTabInt( combinaison );
+            if(!isModeDevloppeur()){
+                System.out.print( "(la combinaison secrete est : " );
+                afficheTabInt( combinaisonSys );
+                System.out.print( " ) " );
                 System.out.print( "\n " );
             }
-            System.out.println( "Saisir votre proposition " );
+            System.out.println( "Saisir votre proposition :" );
             int[] proposition = saisieUtilisateur();
-            System.out.print( "\n " );
-            result = compared( combinaison, proposition );
-
+            result = compared( combinaisonSys, proposition );
             System.out.print( "votre proposition est: " );
             afficheTabInt( proposition );
+            System.out.print( " " );
             afficheTabString( result );
             System.out.print( "\n " );
             compar = displayResutCompared( result );
@@ -31,23 +31,24 @@ public class DuelGamer extends Game {
                 System.out.println( "Félicitation vous avez deviné la combinaison secrète " );
                 break;
             } else {
-                System.out.println( "Vous avez raté " );
+
+                System.out.println("Vous avez raté " );
+                System.out.print( "votre combinaison secrete est: ");
+                afficheTabInt( combinaisonUser );
+                System.out.print( "\n " );
                 int[] propositionSystheme = rechercheDichotomique( nombreTour ) ;
-                result = compared( propositionSystheme, combinaisonUtilisateur );
-                System.out.print( "votre combinaison est: " );
-                afficheTabInt( combinaisonUtilisateur );
-                System.out.print( "\n " );
-                System.out.print( "Ma proposition est : " );
+                System.out.print("Ma proposition est : ");
                 afficheTabInt( propositionSystheme );
+                System.out.print( " " );
+                afficheTabString( signe );
                 System.out.print( "\n " );
-                afficheTabString( result );
-                compar = displayResutCompared( result );
+                compar = displayResutCompared( signe );
             }
             if (compar == true) {
-                System.out.println( "J´ai deviné votre combinaison secrète " );
+                System.out.println("J´ai deviné votre combinaison secrète " );
                 break;
             } else {
-                System.out.println( "J'ai raté" );
+                System.out.println("J'ai raté" );
             }
         }while (!compar && nombreTour < nombreEssai) ;
         }

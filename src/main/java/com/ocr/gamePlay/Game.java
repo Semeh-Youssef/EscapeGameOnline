@@ -7,8 +7,14 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+/**
+ * class mere qui regroupe toute les methodes quand va utiliser tout au long de notre jeux
+ */
 public class Game {
+    static Logger logger = LogManager.getLogger(Game.class);
     InputStream input;
     int tailleCombinaison ;
     int nombreEssai ;
@@ -22,9 +28,11 @@ public class Game {
 
     Scanner sc = new Scanner( System.in );
 
+    /**
+     * constructeur par defaut qui telecharge les variable qui se trouve dans le ficher config.properties,
+     */
+
     public Game() {
-
-
         try {
             input = new FileInputStream("config.properties");
             Properties prop = new Properties();
@@ -32,23 +40,21 @@ public class Game {
             // load a properties file
 
             prop.load(input);
-
             tailleCombinaison = Integer.parseInt( prop.getProperty( "taille.combinaison" ) );
             nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
             mode_Devloppeur =  (prop.getProperty("mode.developpeur"));
 
         } catch (IOException ex) {
             tailleCombinaison=4;
-          //  logger.error("msg d'erreur");
+            logger.error("Problème de télécharger le fichier .properties");
             ex.printStackTrace();
         }
         tableau = new String[tailleCombinaison];
         combinaison=new int[tailleCombinaison];
         combinaisonAleatoire = new int[tailleCombinaison];
+        signe = new String[tailleCombinaison];
+        propositionSysteme = new int[tailleCombinaison];
     }
-
-
-
 
     /**
      * methode permet de verivier si le mode devloppeur active ou non
@@ -83,8 +89,9 @@ public class Game {
             }
 
         } catch (Exception e) {
-            System.out.println( "Erreur de saisi " );
-            System.out.println( "Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire" );
+            logger.error( "Erreur de saisi" );
+
+            logger.error( "Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire" );
         }
         return combinaison;
    }
@@ -182,8 +189,8 @@ public class Game {
      int[] tableauTrier = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
      int[] min = {0, 0, 0, 0};
      int[] max = {9, 9, 9, 9};
-    String[] signe = new String[tailleCombinaison];
-     int []propositionSysteme = new int[4];
+    String[] signe ;
+     int []propositionSysteme ;
 
     public int[] rechercheDichotomique(int i) {
         int milieu;
@@ -204,19 +211,5 @@ public class Game {
         }
         return propositionSysteme;
     }
-
-
-    /**
-     * methode permet de trouver la combinaison secrette saisie par l´utilisateur,
-     * elle prend en parametre ta combinaison secrette et fait appel la methode rechercheDichotomique
-     * et finalement elle return un tableau de proposition systeme
-     * @param combinaison tableau contient la combinaison secrette de l´utilisateur
-     * @return
-     */
-
-
-
-
-
 
 }

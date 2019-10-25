@@ -11,21 +11,24 @@ public class ChalengerGamer extends Game {
         int nombreTour =0;
 
         int[] combinaisonSys = combinaisonSystem();
-        //if (isModeDevloppeur() == true) {
-            System.out.print( "la combinaison secrete est : " );
+        if (!isModeDevloppeur()) {
+            System.out.print( "(la combinaison secrete est : ");
             afficheTabInt( combinaisonSys );
+            System.out.print( " )");
             System.out.print( "\n" );
-       // }
+       }
         int i = 0;
             boolean resultJeu;
         do {
             int [] propositionUtilisateur = saisieUtilisateur();
             System.out.print( "\n" );
             String [] result = compared( combinaisonSys, propositionUtilisateur );
+            System.out.print( "votre proposition est: " );
+            afficheTabInt( propositionUtilisateur );
+            System.out.print( " " );
             afficheTabString( result );
             resultJeu= displayResutCompared( result );
             nombreTour++;
-
         }while( !resultJeu && nombreTour <nombreEssai);
         if(resultJeu ==true){
             System.out.println( "Felicitation vous avez deviner la combainaison" );}

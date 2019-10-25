@@ -25,3 +25,63 @@
 [ERROR] 2019-10-22 17:37:05.781 [main] Main - msg d'erreur
 [INFO ] 2019-10-23 16:20:56.887 [main] Main -  commencement de jeux 
 [ERROR] 2019-10-23 16:20:56.891 [main] Main - msg d'erreur
+[INFO ] 2019-10-23 17:50:34.722 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-23 17:50:34.725 [main] Main - msg d'erreur
+[INFO ] 2019-10-23 17:52:57.329 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-23 17:52:57.334 [main] Main - msg d'erreur
+[INFO ] 2019-10-23 17:54:49.920 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-23 17:54:49.924 [main] Main - msg d'erreur
+[INFO ] 2019-10-23 17:55:33.950 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-23 17:55:33.953 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 10:08:49.522 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 10:08:49.522 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 10:11:01.545 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 10:11:01.545 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 10:15:02.660 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 10:15:02.664 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 10:16:28.102 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 10:16:28.102 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 10:25:51.921 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 10:25:51.936 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 11:11:13.133 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 11:11:13.137 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 11:44:55.066 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 11:44:55.078 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 11:46:55.624 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 11:46:55.636 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 11:50:36.752 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 11:50:36.756 [main] Main - msg d'erreur
+[INFO ] 2019-10-24 12:15:32.542 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 14:09:07.668 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 14:29:28.083 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 14:34:58.404 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 14:49:46.829 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 14:49:48.820 [main] MenuPrincipal - Erreur de saisi 
+[INFO ] 2019-10-24 14:59:12.870 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 15:00:22.554 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 15:00:36.093 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 15:03:39.454 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-24 15:05:02.548 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-24 15:05:28.530 [main] Game - Erreur de saisi
+[ERROR] 2019-10-24 15:05:28.530 [main] Game - Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire
+[INFO ] 2019-10-25 09:25:17.506 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:26:01.740 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:26:38.890 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:31:51.305 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:32:21.906 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:32:48.301 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-25 09:32:52.676 [main] Game - Erreur de saisi
+[ERROR] 2019-10-25 09:32:52.676 [main] Game - Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire
+[INFO ] 2019-10-25 09:34:00.654 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:34:41.378 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:35:56.540 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:36:58.758 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:40:43.693 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-25 09:40:46.559 [main] MenuPrincipal - Erreur de saisi 
+[INFO ] 2019-10-25 09:46:14.905 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 09:49:02.778 [main] Main -  commencement de jeux 
+[ERROR] 2019-10-25 09:49:09.401 [main] Game - Erreur de saisi
+[ERROR] 2019-10-25 09:49:09.401 [main] Game - Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire
+[INFO ] 2019-10-25 09:49:56.605 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 10:13:58.354 [main] Main -  commencement de jeux 
+[INFO ] 2019-10-25 10:14:05.437 [main] Main -  commencement de jeux 
