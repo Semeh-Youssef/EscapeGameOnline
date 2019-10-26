@@ -23,8 +23,11 @@ public class Game {
     int []combinaison;
     int[] combinaisonAleatoire ;
     protected boolean modeDevloppeur;
-    String [] result = new String[4];
-
+    String [] result;
+    int[] min = {0, 0, 0, 0};
+    int[] max = {9, 9, 9, 9};
+    String[] signe ;
+    int []propositionSysteme ;
 
     Scanner sc = new Scanner( System.in );
 
@@ -54,6 +57,7 @@ public class Game {
         combinaisonAleatoire = new int[tailleCombinaison];
         signe = new String[tailleCombinaison];
         propositionSysteme = new int[tailleCombinaison];
+        result = new String[tailleCombinaison];
     }
 
     /**
@@ -68,7 +72,6 @@ public class Game {
         return modeDevloppeur;
     }
 
-
     /**
      * methode qui permet a l´utilisateur de saisir sa combainaison
      * @return tableau d´entier
@@ -76,6 +79,7 @@ public class Game {
 
     public int [] saisieUtilisateur()
     {
+            combinaison=new int[tailleCombinaison];
         try    {
             String chiffre= Integer.toString(sc.nextInt());
 
@@ -98,7 +102,7 @@ public class Game {
 
 
     /**
-     * combinaision de proposer par le systeme
+     * combinaision  proposer par le systeme
      * @return combinaison de systeme dans un tabeau
      */
 
@@ -110,10 +114,9 @@ public class Game {
         return combinaisonAleatoire;
     }
 
-
     /**
-     *afficher les element d´un tableau d´entier
-     * @param tableau (tableau de  combinaison)
+     *afficher les element d'un tableau d'entier
+     * @param tableau (tableau de combinaison)
      */
     public void afficheTabInt(int [] tableau)
     {
@@ -122,7 +125,7 @@ public class Game {
     }
 
     /**
-     *afficher les element d´un tableau chaine de caractaire
+     *methode permet d'afficher les éléments d'un tableau de chaine de caractaire
      * @param tableau
      */
     public void afficheTabString(String [] tableau)
@@ -131,18 +134,15 @@ public class Game {
             System.out.print( tableau [i]);
     }
 
-
     /**
      * comparer deux combinaisions, qui prend en parametre deux tableaux
-     * la combinaison proposer et proposition
+     * la combinaison secréte et la proposition
      * @param combinaisonAleatoire
      * @param combinaison
-     * @return
+     * @return un tableau rempi de signe
      */
     public String [] compared(int[] combinaisonAleatoire, int[] combinaison) {
-
         int i = 0;
-
         do {
             if (combinaisonAleatoire[i] < combinaison[i]) {
                 result[i] = "+";
@@ -177,30 +177,23 @@ public class Game {
         return x;
     }
 
-
     /**
-     * methode de recherche dichotomique elle prend deux variables, un tableau trier de 0 a 9 et element a rechercher
-     * elle retrourne l´element rechercher
-     * @param tableauTrier
-     * @param elt element a rechercher
-     * @return variable de type int
+     * methode de recherche dichotomique, elle prend le tableau de la combinaison secrete saisi par l'utilisateur
+     * elle retourne la proposition de proposé par l'ordinateur
+     * @param combinaisonSecrete
+     * @return tableau de int
      */
-
-     int[] tableauTrier = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-     int[] min = {0, 0, 0, 0};
-     int[] max = {9, 9, 9, 9};
-    String[] signe ;
-     int []propositionSysteme ;
-
-    public int[] rechercheDichotomique(int i) {
+    public int[] rechercheDichotomique(int [] combinaisonSecrete) {
         int milieu;
-        for (int j = 0; j <combinaison.length; j++) {
+        for (int j = 0; j <combinaisonSecrete.length; j++) {
             if (min[j] <= max[j]) {
-                milieu = (min[j] + max[j]) / 2;
-                if (combinaison[j] == tableauTrier[milieu])
-                {  signe[j] = "=";
-                    propositionSysteme[j] = milieu;}
-                else if (tableauTrier[milieu] < combinaison[j]) {
+                milieu = ((min[j] + max[j]) / 2);
+                propositionSysteme[j] = milieu;
+                if (combinaisonSecrete[j] == milieu) {
+                    signe[j] = "=";
+                }
+                else if (milieu < combinaisonSecrete[j]) {
+
                     min[j] = milieu + 1;
                     signe[j] = "-";}
                 else {
@@ -211,5 +204,4 @@ public class Game {
         }
         return propositionSysteme;
     }
-
 }

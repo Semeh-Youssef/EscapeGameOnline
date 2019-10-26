@@ -5,13 +5,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 /**
- * menu de jeu
+ * Cette class presente le menu de jeu
  */
 
 public class MenuPrincipal {
     static Logger logger = LogManager.getLogger(MenuPrincipal.class);
     /**
-     * Affiche tous les modes disponibles dans le jeu.
+     * affiche la liste de menu principal
      */
     public void displayMenu() {
         System.out.print("1 - Challenger \r\n");
@@ -21,8 +21,9 @@ public class MenuPrincipal {
         System.out.println("choisissez le mode de jeu qui vous convient : \r\n");
     }
     /**
-     * Afficher un mode choisi par l´utilisateur
-     * @param nbMode The selected menu.
+     * Affiche  le mode de jeu , elle prend en parametre un variable de type entier,
+     * selon cette variable affiche le mode de jeu
+     * @param nbMode numero saisir par l'utilisateur.
      */
     public void displaySelectedMenu(int nbMode) {
 
@@ -56,8 +57,10 @@ public class MenuPrincipal {
             }
     }
     /**
-     * Run asking process for a menu.
-     *
+     * Exécuter le processus de demande pour le menu.
+     * affiche le menu principal,
+     * donne l'accès a l'utilisateur de saisir sont choix de jeu
+     * qui l'on passe en parametre dans la methode displaySelectedMeu
      */
     public void runMenu() {
         this.displayMenu();
