@@ -35,11 +35,8 @@ public class DuelGamer extends Game {
                 System.out.println( "Félicitation vous avez deviné la combinaison secrète " );
                 break;
             } else {
-               // System.out.println("Vous avez raté " );
-               // System.out.print( "votre combinaison secrete est: ");
-                // afficheTabInt( combinaisonUser );
-              //  System.out.print( "\n " );
-                int[] propositionSystheme = rechercheDichotomique( combinaisonUser ) ;
+              System.out.println("Vous avez raté " );
+               int[] propositionSystheme = rechercheDichotomique( combinaisonUser ) ;
                 System.out.print("Ma proposition est : ");
                 afficheTabInt( propositionSystheme );
                 System.out.print( " -> Réponse : " );

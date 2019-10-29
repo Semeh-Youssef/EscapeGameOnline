@@ -28,7 +28,7 @@ public class Game {
     int[] max = {9, 9, 9, 9};
     String[] signe ;
     int []propositionSysteme ;
-
+   static boolean modeDev= false;
     Scanner sc = new Scanner( System.in );
 
     /**
@@ -45,7 +45,10 @@ public class Game {
             prop.load(input);
             tailleCombinaison = Integer.parseInt( prop.getProperty( "taille.combinaison" ) );
             nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
-            mode_Devloppeur =  (prop.getProperty("mode.developpeur"));
+           if (modeDev){
+               mode_Devloppeur = "active" ;}
+            else {
+                mode_Devloppeur =  (prop.getProperty("mode.developpeur"));}
 
         } catch (IOException ex) {
             tailleCombinaison=4;
@@ -58,6 +61,7 @@ public class Game {
         signe = new String[tailleCombinaison];
         propositionSysteme = new int[tailleCombinaison];
         result = new String[tailleCombinaison];
+
     }
 
     /**
@@ -66,15 +70,15 @@ public class Game {
      */
 
     public boolean isModeDevloppeur() {
-        if(mode_Devloppeur == "active")
+        modeDevloppeur =false;
+        if(mode_Devloppeur.equals( "active" ))
             modeDevloppeur =true;
-        else modeDevloppeur = false;
         return modeDevloppeur;
     }
 
     /**
      * methode qui permet a l´utilisateur de saisir sa combainaison
-     * @return tableau d´entier
+     * @return int [] combinaison
      */
 
     public int [] saisieUtilisateur()
@@ -103,7 +107,7 @@ public class Game {
 
     /**
      * combinaision  proposer par le systeme
-     * @return combinaison de systeme dans un tabeau
+     * @return int [] combinaison
      */
 
     public int[] combinaisonSystem() {
@@ -181,7 +185,7 @@ public class Game {
      * methode de recherche dichotomique, elle prend le tableau de la combinaison secrete saisi par l'utilisateur
      * elle retourne la proposition de proposé par l'ordinateur
      * @param combinaisonSecrete
-     * @return tableau de int
+     * @return int [] propositionSysteme
      */
     public int[] rechercheDichotomique(int [] combinaisonSecrete) {
         int milieu;

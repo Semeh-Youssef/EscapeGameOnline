@@ -18,7 +18,7 @@ public class ChalengerGamer extends Game {
 
         int nombreTour =0;
         int[] combinaisonSys = combinaisonSystem();
-        if (!isModeDevloppeur()) {
+        if (isModeDevloppeur()) {
             System.out.print( "(la combinaison secrete est : ");
             afficheTabInt( combinaisonSys );
             System.out.print( " )");

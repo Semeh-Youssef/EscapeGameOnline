@@ -9,7 +9,7 @@
         <module name="EscapeGameOnline" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="9">
+    <bytecodeTargetLevel target="8">
       <module name="EscapeGameOnline" target="7" />
     </bytecodeTargetLevel>
   </component>

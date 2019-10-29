@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EscapeGameOnline:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EscapeGameOnline_jar</output-path>
+    <root id="archive" name="EscapeGameOnline.jar">
+      <element id="module-output" name="EscapeGameOnline" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
