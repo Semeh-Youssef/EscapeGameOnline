@@ -12,7 +12,7 @@ public class ChalengerGamer extends Game {
      */
     public void plays() {
         System.out.println( "Règle de jeux " );
-        System.out.println( "Le système va définit une combinaison de "+tailleCombinaison +" chiffres aléatoirement \n" +
+        System.out.println( "Le systeme va définit une combinaison de "+tailleCombinaison +" chiffres aleatoirement \n" +
                 "qui est afficher en bas et vous devez le deniver " );
         System.out.println( "Attention vous avez "+ nombreEssai +" essai ! " );
 
@@ -33,7 +33,7 @@ public class ChalengerGamer extends Game {
             String [] result = compared( combinaisonSys, propositionUtilisateur );
             System.out.print( "Proposition : " );
             afficheTabInt( propositionUtilisateur );
-            System.out.print( " -> Réponse : " );
+            System.out.print( " -> Reponse : " );
             afficheTabString( result );
             System.out.print( "\n" );
             resultJeu= displayResutCompared( result );
@@ -42,7 +42,11 @@ public class ChalengerGamer extends Game {
         if(resultJeu ==true){
             System.out.println( "Felicitation vous avez deviner la combainaison" );}
         else
-        {System.out.println( "vous avez perdu" );}
+        {System.out.println( "vous avez perdu" );
+            System.out.print( "la combinaison secrete est : ");
+            afficheTabInt( combinaisonSys );
+            System.out.println(  );
+        }
     }
     }
 

@@ -15,7 +15,7 @@ public class DuelGamer extends Game {
 
         do {
             nombreTour++;
-            if(!isModeDevloppeur()){
+            if(isModeDevloppeur()){
                 System.out.print( "(la combinaison secrete est : " );
                 afficheTabInt( combinaisonSys );
                 System.out.print( " ) " );
@@ -26,29 +26,29 @@ public class DuelGamer extends Game {
             result = compared( combinaisonSys, proposition );
             System.out.print( "Votre proposition : " );
             afficheTabInt( proposition );
-            System.out.print( " -> Réponse : " );
+            System.out.print( " -> Reponse : " );
             afficheTabString( result );
             System.out.print( "\n " );
             compar = displayResutCompared( result );
 
             if (compar == true) {
-                System.out.println( "Félicitation vous avez deviné la combinaison secrète " );
+                System.out.println( "Felicitation vous avez deviné la combinaison secrete " );
                 break;
             } else {
-              System.out.println("Vous avez raté " );
+              System.out.println("Vous avez rate " );
                int[] propositionSystheme = rechercheDichotomique( combinaisonUser ) ;
                 System.out.print("Ma proposition est : ");
                 afficheTabInt( propositionSystheme );
-                System.out.print( " -> Réponse : " );
+                System.out.print( " -> Reponse : " );
                 afficheTabString( signe );
                 System.out.print( "\n " );
                 compar = displayResutCompared( signe );
             }
             if (compar == true) {
-                System.out.println("J´ai deviné votre combinaison secrète " );
+                System.out.println("J´ai devine votre combinaison secrete " );
                 break;
             } else {
-                System.out.println("J'ai raté" );
+                System.out.println("J'ai rate" );
             }
         }while (!compar && nombreTour < nombreEssai) ;
         }

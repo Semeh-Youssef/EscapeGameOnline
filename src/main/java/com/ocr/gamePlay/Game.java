@@ -1,7 +1,6 @@
 package com.ocr.gamePlay;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -52,7 +51,7 @@ public class Game {
 
         } catch (IOException ex) {
             tailleCombinaison=4;
-            logger.error("Problème de télécharger le fichier .properties");
+            logger.error("Probleme de telechargement de fichier .properties");
             ex.printStackTrace();
         }
         tableau = new String[tailleCombinaison];
@@ -65,8 +64,8 @@ public class Game {
     }
 
     /**
-     * methode permet de verivier si le mode devloppeur active ou non
-     * @return
+     * isModeDevloppeur verivier si le mode devloppeur active ou non
+     * @return boolean modeDevloppeur
      */
 
     public boolean isModeDevloppeur() {
@@ -77,7 +76,7 @@ public class Game {
     }
 
     /**
-     * methode qui permet a l´utilisateur de saisir sa combainaison
+     * saisieUtilisateur permet a l´utilisateur de saisir sa combainaison
      * @return int [] combinaison
      */
 
@@ -119,8 +118,8 @@ public class Game {
     }
 
     /**
-     *afficher les element d'un tableau d'entier
-     * @param tableau (tableau de combinaison)
+     *afficheTabInt affiche les element d'un tableau d'entier
+     * @param   tableau  [] int
      */
     public void afficheTabInt(int [] tableau)
     {
@@ -129,8 +128,8 @@ public class Game {
     }
 
     /**
-     *methode permet d'afficher les éléments d'un tableau de chaine de caractaire
-     * @param tableau
+     *afficheTabString affiche les éléments d'un tableau de chaine de caractaire
+     * @param tableau [] String
      */
     public void afficheTabString(String [] tableau)
     {
@@ -141,9 +140,9 @@ public class Game {
     /**
      * comparer deux combinaisions, qui prend en parametre deux tableaux
      * la combinaison secréte et la proposition
-     * @param combinaisonAleatoire
-     * @param combinaison
-     * @return un tableau rempi de signe
+     * @param combinaisonAleatoire [] int
+     * @param combinaison [] int
+     * @return String [] result
      */
     public String [] compared(int[] combinaisonAleatoire, int[] combinaison) {
         int i = 0;
@@ -161,11 +160,11 @@ public class Game {
     }
 
     /**
-     * cette methode affiche la  resultat du comapraision des deux combinaisons,
-     * elle prend en parametre un tableau chaine de caractaire, si tout le tabeau contient = elle retourne true
+     * displayResutCompared affiche la  resultat du comapraision des deux combinaisons,
+     * elle prend en parametre String [], si tout le tabeau contient = elle retourne true
      * si non false
-     * @param result tableau de chaine de caractaire (+,-,=)
-     * @return boolean
+     * @param result [] String
+     * @return boolean x
      */
 
     public boolean displayResutCompared( String [] result){
@@ -182,9 +181,9 @@ public class Game {
     }
 
     /**
-     * methode de recherche dichotomique, elle prend le tableau de la combinaison secrete saisi par l'utilisateur
-     * elle retourne la proposition de proposé par l'ordinateur
-     * @param combinaisonSecrete
+     * rechercheDichotomique retourne une proposition  proposé par l'ordinateur,
+     * prend en parametre la combinaisonSecrete de l'utilisateur
+     * @param combinaisonSecrete [] int
      * @return int [] propositionSysteme
      */
     public int[] rechercheDichotomique(int [] combinaisonSecrete) {

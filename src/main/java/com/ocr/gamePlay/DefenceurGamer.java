@@ -16,12 +16,12 @@ public class DefenceurGamer extends Game{
              result = compared( premierePropositionSys, combinaison );
              System.out.print( "Proposition : " );
              afficheTabInt( premierePropositionSys );
-             System.out.print( " -> Réponse : " );
+             System.out.print( " -> Reponse : " );
              afficheTabString( result );
              System.out.print( "\n" );
              comp = displayResutCompared( result );
         if(comp ==true)
-            System.out.println( "J ai réussi a deviné votre combinaison " );
+            System.out.println( "J ai reussi a deviné votre combinaison " );
         else {
         do {
             nombreTour ++;
@@ -29,13 +29,13 @@ public class DefenceurGamer extends Game{
             result = compared(propositionSysteme, combinaison );
             System.out.print( "Proposition : " );
             afficheTabInt( propositionSysteme );
-            System.out.print( "-> Réponse : " );
+            System.out.print( "-> Reponse : " );
             afficheTabString( result );
             System.out.print( "\n" );
             comp = displayResutCompared( result );
           }while( !comp && nombreTour <nombreEssai);
             if(comp ==true)
-            System.out.println( "J'ai réussi a deviné votre combinaison " );
+            System.out.println( "J'ai reussi a deviné votre combinaison " );
             else
                 System.out.println( "J'ai perdu " );
         }
