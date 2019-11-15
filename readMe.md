@@ -10,8 +10,8 @@ _Description :_ c'est une rubrique sert a chercher une combinaison a X chiffre
  -  de quitter l'application.
  
  _Demarrage en mode console :_ on peut compiler avec deux methodes soit le mode developpeur active soit inactive  : 
-    * la premiere methode le mode developpeur n'est pas active : java -cp EscapeGameOnline.jar  
-    * la deuxieme methode le mode developpeur est active : java -cp EscapeGameOnline.jar modeDev 
+    * la premiere methode le mode developpeur n'est pas active : java -jar target/EscapeGameOnline-1.0-SNAPSHOT.jar  
+    * la deuxieme methode le mode developpeur est active : java -jar target/EscapeGameOnline-1.0-SNAPSHOT.jar modeDev 
  
    mais avant il faut que vous deplacez  dans le dossier où est enregistré le ficher EscapeGameOnline.jar 
    puis executer l'une des commandes ci dessus. 
@@ -19,4 +19,4 @@ _Description :_ c'est une rubrique sert a chercher une combinaison a X chiffre
  _les outils:_ *intellij
                *log4j
                *maven
- 
+ -Java : 1.8.0_211

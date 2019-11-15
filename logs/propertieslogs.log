@@ -182,3 +182,10 @@
 [INFO ] 2019-10-30 10:46:29.844 [main] Main - commencement du jeux 
 [INFO ] 2019-10-30 10:46:57.721 [main] Main - commencement du jeux 
 [INFO ] 2019-10-30 11:40:32.568 [main] Main - commencement du jeux 
+[INFO ] 2019-10-31 12:23:08.247 [main] Main - commencement du jeux 
+[INFO ] 2019-10-31 16:43:51.316 [main] Main - commencement du jeux 
+[ERROR] 2019-10-31 16:44:07.784 [main] Game - Erreur de saisi
+[ERROR] 2019-10-31 16:44:07.784 [main] Game - Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire
+[ERROR] 2019-10-31 16:44:07.785 [main] Game - Erreur de saisi
+[ERROR] 2019-10-31 16:44:07.785 [main] Game - Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire
+[INFO ] 2019-10-31 16:52:36.803 [main] Main - commencement du jeux 

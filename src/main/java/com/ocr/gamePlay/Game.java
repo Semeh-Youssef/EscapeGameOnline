@@ -1,20 +1,17 @@
 package com.ocr.gamePlay;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.io.*;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * class mere qui regroupe toute les methodes quand va utiliser tout au long de notre jeux
  */
 public class Game {
     static Logger logger = LogManager.getLogger(Game.class);
-    InputStream input;
     int tailleCombinaison ;
     int nombreEssai ;
     String mode_Devloppeur;
@@ -23,12 +20,13 @@ public class Game {
     int[] combinaisonAleatoire ;
     protected boolean modeDevloppeur;
     String [] result;
-    int[] min = {0, 0, 0, 0};
-    int[] max = {9, 9, 9, 9};
+    int[] min ;
+    int[] max ;
     String[] signe ;
     int []propositionSysteme ;
-   static boolean modeDev= false;
+    static boolean modeDev= false;
     Scanner sc = new Scanner( System.in );
+    InputStream input;
 
     /**
      * constructeur par defaut qui telecharge les variable qui se trouve dans le ficher config.properties,
@@ -36,7 +34,8 @@ public class Game {
 
     public Game() {
         try {
-            input = new FileInputStream("config.properties");
+
+            input = new FileInputStream(new File( "resources/config.properties" ));
             Properties prop = new Properties();
 
             // load a properties file
@@ -44,15 +43,22 @@ public class Game {
             prop.load(input);
             tailleCombinaison = Integer.parseInt( prop.getProperty( "taille.combinaison" ) );
             nombreEssai = Integer.parseInt( (prop.getProperty("nombre.essai")) );
-           if (modeDev){
-               mode_Devloppeur = "active" ;}
+            if (modeDev){
+                mode_Devloppeur = "active" ;}
             else {
                 mode_Devloppeur =  (prop.getProperty("mode.developpeur"));}
 
         } catch (IOException ex) {
             tailleCombinaison=4;
-            logger.error("Probleme de telechargement de fichier .properties");
+            logger.error("Probleme de telechargement de fichier config.properties");
             ex.printStackTrace();
+        }
+        max= new int[tailleCombinaison];
+        min = new int [tailleCombinaison];
+        for (int i=0; i<tailleCombinaison; i++)
+        {
+            min[i]=0;
+            max[i]=9;
         }
         tableau = new String[tailleCombinaison];
         combinaison=new int[tailleCombinaison];
@@ -82,7 +88,7 @@ public class Game {
 
     public int [] saisieUtilisateur()
     {
-            combinaison=new int[tailleCombinaison];
+        combinaison=new int[tailleCombinaison];
         try    {
             String chiffre= Integer.toString(sc.nextInt());
 
@@ -101,7 +107,7 @@ public class Game {
             logger.error( "Il faut saisir des valeurs pas des carcteres special ni des chaines de catractaire" );
         }
         return combinaison;
-   }
+    }
 
 
     /**
